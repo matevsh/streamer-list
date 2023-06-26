@@ -13,4 +13,27 @@ datasource db {
 model User {
   id   Int    @id @default(autoincrement())
   uuid String @unique
+  Vote Vote[]
+
+  @@map("user")
+}
+
+model Streamer {
+  id          Int    @id @default(autoincrement())
+  name        String
+  platform    String
+  description String
+  Vote        Vote[]
+
+  @@map("streamer")
+}
+
+model Vote {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int      @map("user_id")
+  streamer   Streamer @relation(fields: [streamerId], references: [id])
+  streamerId Int      @map("streamer_id")
+
+  @@map("vote")
 }
