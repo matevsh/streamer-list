@@ -12,16 +12,16 @@ export class UserController {
     @Req() request: Request,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const cookieUserId = request.cookies['userId'];
+    const userId = request.cookies.userId;
 
-    if (cookieUserId) {
-      const dbRes = await this.userService.checkUserId(cookieUserId);
-      if (dbRes) return { success: true };
+    if (userId) {
+      const user = await this.userService.getUser(userId);
+      if (user) return { success: true };
     }
 
-    const generatedUser = await this.userService.createUser();
-    if (generatedUser) {
-      response.cookie('userId', generatedUser.uuid);
+    const newUser = await this.userService.createUser();
+    if (newUser) {
+      response.cookie('userId', newUser.uuid);
       return { success: true };
     }
 
