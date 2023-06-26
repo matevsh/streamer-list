@@ -30,6 +30,7 @@ model Streamer {
 
 model Vote {
   id         Int      @id @default(autoincrement())
+  positive   Boolean
   user       User     @relation(fields: [userId], references: [id])
   userId     Int      @map("user_id")
   streamer   Streamer @relation(fields: [streamerId], references: [id])
