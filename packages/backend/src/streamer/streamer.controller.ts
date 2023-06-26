@@ -37,8 +37,11 @@ export class StreamerController {
   }
 
   @Put()
-  async vote(@Req() request: Request, @Body() body: VoteDto) {
+  async vote(
+    @Req() request: Request,
+    @Body() { streamerId, positive }: VoteDto,
+  ) {
     const { userId } = request.cookies;
-    await this.streamerService.vote(body.streamerId, userId);
+    await this.streamerService.vote(positive, streamerId, userId);
   }
 }

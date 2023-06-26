@@ -20,7 +20,11 @@ export class StreamerService {
     return this.prisma.streamer.findUnique({ where: { id } });
   }
 
-  async vote(streamerId: number, userUuid: string): Promise<boolean> {
+  async vote(
+    positive: boolean,
+    streamerId: number,
+    userUuid: string,
+  ): Promise<boolean> {
     const user = await this.prisma.user.findUnique({
       where: { uuid: userUuid },
     });
@@ -29,6 +33,7 @@ export class StreamerService {
       data: {
         streamerId,
         userId: user.id,
+        positive,
       },
     });
 
