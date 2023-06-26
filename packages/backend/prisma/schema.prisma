@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id   Int    @id @default(autoincrement())
-  uuid String @unique
+  uuid String @unique @default(uuid())
   Vote Vote[]
 
   @@map("user")
