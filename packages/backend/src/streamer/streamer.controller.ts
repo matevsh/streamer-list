@@ -1,4 +1,16 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post, Put } from '@nestjs/common';
 
 @Controller('streamer')
-export class StreamerController {}
+export class StreamerController {
+  @Post()
+  addStreamer() {}
+
+  @Get()
+  getStreamers() {}
+
+  @Get(':id')
+  getStreamer() {}
+
+  @Put()
+  vote() {}
+}
