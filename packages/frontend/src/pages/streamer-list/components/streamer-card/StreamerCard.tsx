@@ -1,4 +1,8 @@
 import styles from './streamer-card.module.css'
+import {
+    IconArrowBigDownFilled,
+    IconArrowBigUpFilled,
+} from "@tabler/icons-react";
 
 const COLORS = [
     "#e0ca36",
@@ -20,8 +24,18 @@ export function StreamerCard({idx, name}: Props) {
 
     return (
         <div className={styles.card}>
-            <p style={style} className={styles.cardNumber}>{idx + 1}</p>
-            <h1>{name}</h1>
+            <div className={styles.flex}>
+                <p style={style} className={styles.cardNumber}>{idx + 1}</p>
+                <h1>{name}</h1>
+            </div>
+            <div className={styles.votes}>
+                <div>
+                    <IconArrowBigUpFilled size={30}/>
+                </div>
+                <div>
+                    <IconArrowBigDownFilled size={30}/>
+                </div>
+            </div>
         </div>
     )
 }

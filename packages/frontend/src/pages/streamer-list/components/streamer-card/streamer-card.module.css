@@ -1,12 +1,39 @@
 .card {
     background: #132d4a;
     color: white;
-    padding: 1rem;
     margin-bottom: 2rem;
     display: flex;
+    justify-content: space-between;
+    border-radius: .5rem;
+    border: 1px solid #284b73;
 }
 
 .cardNumber {
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
+}
+
+.votes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    padding: 0 1rem
+}
+
+.votes > div {
+    transition: .5s;
+    cursor: pointer;
+}
+
+.votes > div:hover {
+    color: gray;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
 }
