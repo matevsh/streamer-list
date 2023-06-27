@@ -5,13 +5,19 @@ import {Header} from "./components/header/Header.tsx";
 import {StreamerCard} from "./components/streamer-card/StreamerCard.tsx";
 
 export function StreamerList() {
-    const {data} = useGetStreamers()
+    const {data, refetch} = useGetStreamers()
 
     return (
         <div className={styles.container}>
             <Header />
             {data && data.data.map((item, idx) => (
-                <StreamerCard name={item.name} key={idx} idx={idx} votes={item.vote}/>
+                <StreamerCard
+                    name={item.name}
+                    key={idx} idx={idx}
+                    votes={item.vote}
+                    refetch={refetch}
+                    streamerId={item.id}
+                />
             ))}
         </div>
     )

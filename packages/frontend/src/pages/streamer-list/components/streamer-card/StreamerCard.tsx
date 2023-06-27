@@ -4,6 +4,7 @@ import {
     IconArrowBigUpFilled,
 } from "@tabler/icons-react";
 import {StreamerVotes} from "../../models/streamers-schema.ts";
+import {usePutVote} from "../../mutations/use-put-vote.ts";
 
 const COLORS = [
     "#e0ca36",
@@ -15,13 +16,23 @@ interface Props {
     idx: number
     name: string
     votes: StreamerVotes
+    refetch: () => void
+    streamerId: number
 }
 
-export function StreamerCard({idx, name, votes}: Props) {
+export function StreamerCard({idx, name, votes, refetch, streamerId}: Props) {
+    const {mutate} = usePutVote(refetch)
+
     const style: Record<string, string> = {}
 
     if (COLORS[idx]) {
         style.color = COLORS[idx]
+    }
+
+    function vote(positive: boolean) {
+        return () => {
+            mutate({streamerId, positive})
+        }
     }
 
     return (
@@ -31,10 +42,10 @@ export function StreamerCard({idx, name, votes}: Props) {
                 <h1>{name}</h1>
             </div>
             <div className={styles.votes}>
-                <div>
+                <div onClick={vote(true)}>
                     <IconArrowBigUpFilled size={30} color={votes.up.voted ? "green": undefined}/>
                 </div>
-                <div>
+                <div onClick={vote(false)}>
                     <IconArrowBigDownFilled size={30} color={votes.down.voted ? "red": undefined}/>
                 </div>
             </div>
