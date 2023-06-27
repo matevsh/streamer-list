@@ -1,7 +1,7 @@
 import {lazy} from "react";
 import {createBrowserRouter} from "react-router-dom";
 
-import {Root} from "./pages/Root.tsx";
+import {Root} from "./pages/root/Root.tsx";
 import StreamerList from "./pages/streamer-list";
 import {Page404} from "./pages/Page404.tsx";
 
