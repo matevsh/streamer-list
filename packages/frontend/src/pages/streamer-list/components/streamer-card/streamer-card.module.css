@@ -1,0 +1,12 @@
+.card {
+    background: #132d4a;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+.cardNumber {
+    color: white;
+    font-size: 2rem;
+}
