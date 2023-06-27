@@ -25,8 +25,10 @@ export class StreamerController {
   }
 
   @Get()
-  async getStreamers() {
-    const streamers = await this.streamerService.getStreamers();
+  async getStreamers(@Req() request: Request) {
+    const { userId } = request.cookies;
+
+    const streamers = await this.streamerService.getStreamers(userId);
     return { success: Boolean(streamers), data: streamers };
   }
 
@@ -42,6 +44,12 @@ export class StreamerController {
     @Body() { streamerId, positive }: VoteDto,
   ) {
     const { userId } = request.cookies;
-    await this.streamerService.vote(positive, streamerId, userId);
+
+    const result = await this.streamerService.vote(
+      positive,
+      streamerId,
+      userId,
+    );
+    return { success: Boolean(result) };
   }
 }

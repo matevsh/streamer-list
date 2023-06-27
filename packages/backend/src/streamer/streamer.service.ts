@@ -12,8 +12,56 @@ export class StreamerService {
     return this.prisma.streamer.create({ data });
   }
 
-  getStreamers(): Promise<Array<Streamer> | null> {
-    return this.prisma.streamer.findMany({});
+  private getVotes(streamerId: number) {
+    const votesUp = this.prisma.vote.findMany({
+      where: {
+        streamerId,
+        positive: true,
+      },
+    });
+    const votesDown = this.prisma.vote.findMany({
+      where: {
+        streamerId,
+        positive: false,
+      },
+    });
+    return Promise.all([votesUp, votesDown]);
+  }
+
+  async getStreamers(uuid: string) {
+    const promiseArr = [];
+    const streamers = await this.prisma.streamer.findMany({
+      include: {
+        Vote: {
+          include: {
+            user: true,
+          },
+        },
+      },
+    });
+
+    streamers.map(({ Vote, ...streamer }) => {
+      const votesPromise = this.getVotes(streamer.id).then(
+        ([votesUp, votesDown]) => {
+          return {
+            ...streamer,
+            vote: {
+              up: {
+                voted: Vote.some((v) => v.user.uuid === uuid && v.positive),
+                amount: votesUp.length,
+              },
+              down: {
+                voted: Vote.some((v) => v.user.uuid === uuid && !v.positive),
+                amount: votesDown.length,
+              },
+            },
+          };
+        },
+      );
+      promiseArr.push(votesPromise);
+    });
+
+    return await Promise.all(promiseArr);
   }
 
   getStreamerById(id: number): Promise<Streamer | null> {
@@ -25,6 +73,25 @@ export class StreamerService {
     streamerId: number,
     userUuid: string,
   ): Promise<boolean> {
+    const isExist = await this.prisma.vote.findFirst({
+      where: {
+        user: {
+          uuid: userUuid,
+        },
+      },
+    });
+
+    if (isExist) {
+      await this.prisma.vote.delete({
+        where: {
+          id: isExist.id,
+        },
+      });
+      if (isExist.positive === positive) {
+        return true;
+      }
+    }
+
     const user = await this.prisma.user.findUnique({
       where: { uuid: userUuid },
     });
