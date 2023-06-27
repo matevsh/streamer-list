@@ -11,7 +11,7 @@ export function StreamerList() {
         <div className={styles.container}>
             <Header />
             {data && data.data.map((item, idx) => (
-                <StreamerCard name={item.name} key={idx} idx={idx}/>
+                <StreamerCard name={item.name} key={idx} idx={idx} votes={item.vote}/>
             ))}
         </div>
     )

@@ -3,6 +3,7 @@ import {
     IconArrowBigDownFilled,
     IconArrowBigUpFilled,
 } from "@tabler/icons-react";
+import {StreamerVotes} from "../../models/streamers-schema.ts";
 
 const COLORS = [
     "#e0ca36",
@@ -13,9 +14,10 @@ const COLORS = [
 interface Props {
     idx: number
     name: string
+    votes: StreamerVotes
 }
 
-export function StreamerCard({idx, name}: Props) {
+export function StreamerCard({idx, name, votes}: Props) {
     const style: Record<string, string> = {}
 
     if (COLORS[idx]) {
@@ -30,10 +32,10 @@ export function StreamerCard({idx, name}: Props) {
             </div>
             <div className={styles.votes}>
                 <div>
-                    <IconArrowBigUpFilled size={30}/>
+                    <IconArrowBigUpFilled size={30} color={votes.up.voted ? "green": undefined}/>
                 </div>
                 <div>
-                    <IconArrowBigDownFilled size={30}/>
+                    <IconArrowBigDownFilled size={30} color={votes.down.voted ? "red": undefined}/>
                 </div>
             </div>
         </div>
