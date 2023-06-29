@@ -21,14 +21,16 @@ export function StreamerDetails() {
                 <span>Powróć do listy</span>
             </Link>
             <div className={styles.content}>
-                <div className={styles.imageContainer}>
-                    <div className={styles.icon}><Icon /></div>
-                    <img src={DEFAULT_IMAGE} alt="streamer image"/>
-                </div>
-                <div>
-                    <p style={{color}} className={styles.platform}>{data?.data.platform}</p>
-                    <p className={styles.title}>{data?.data.name}</p>
-                    <span>{data?.data.description}</span>
+                <div className={styles.headerContent}>
+                    <div className={styles.imageContainer}>
+                        <div className={styles.icon}><Icon /></div>
+                        <img src={DEFAULT_IMAGE} alt="streamer image"/>
+                    </div>
+                    <div>
+                        <p style={{color}} className={styles.platform}>{data?.data.platform}</p>
+                        <p className={styles.title}>{data?.data.name}</p>
+                        <span>{data?.data.description}</span>
+                    </div>
                 </div>
             </div>
         </section>

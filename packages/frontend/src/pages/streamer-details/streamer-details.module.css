@@ -10,6 +10,9 @@
     border-radius: .5rem;
     border: 1px solid #284b73;
     padding: 1rem;
+}
+
+.headerContent {
     display: flex;
     gap: 1rem;
 }
@@ -51,4 +54,10 @@
 
 .platform {
     text-transform: uppercase;
+}
+
+@media(max-width: 600px) {
+    .container {
+        padding: 0 1rem;
+    }
 }
