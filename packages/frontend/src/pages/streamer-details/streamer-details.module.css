@@ -9,6 +9,9 @@
     background: #132d4a;
     border-radius: .5rem;
     border: 1px solid #284b73;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .navigation {
@@ -17,4 +20,35 @@
     color: inherit;
     margin-bottom: .5rem;
     gap: .5rem
+}
+
+.imageContainer {
+    height: 200px;
+    width: 200px;
+    position: relative;
+
+}
+
+.imageContainer img {
+    height: 100%;
+    width: auto;
+    border-radius: .5rem;
+}
+
+.title {
+    font-size: 3rem;
+}
+
+.icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: .5rem;
+    padding: .5rem;
+    background: black;
+    border-radius: .5rem;
+}
+
+.platform {
+    text-transform: uppercase;
 }
