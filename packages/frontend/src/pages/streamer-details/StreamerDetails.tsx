@@ -1,11 +1,15 @@
-import {useParams, Navigate, Link} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 
 import styles from './streamer-details.module.css'
 import {IconArrowNarrowLeft} from "@tabler/icons-react";
+import {useStreamerDetails} from "./queries/use-streamer-details.ts";
 
 export function StreamerDetails() {
     const {id: streamerId} = useParams()
-    if(!streamerId) return <Navigate to={'/'} />
+
+    const {isLoading, data} = useStreamerDetails(streamerId)
+
+    if(isLoading) return <>ładowanie...</>
 
     return (
         <section className={styles.container}>
@@ -14,7 +18,7 @@ export function StreamerDetails() {
                 <span>Powróć do listy</span>
             </Link>
             <div className={styles.content}>
-                <h1>Streamer Details</h1>
+                {data?.data.name}
             </div>
         </section>
     )
