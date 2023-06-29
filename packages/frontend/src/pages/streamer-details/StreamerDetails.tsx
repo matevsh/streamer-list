@@ -5,14 +5,22 @@ import styles from './streamer-details.module.css'
 import {useStreamerDetails} from "./queries/use-streamer-details.ts";
 import {DEFAULT_IMAGE} from "../../common/constants/default-image.ts";
 import {getPlatformIcon} from "../../common/data/platform-icons.ts";
+import {usePutVote} from "../../common/mutations/use-put-vote.ts";
 
 export function StreamerDetails() {
     const {id: streamerId} = useParams()
-    const {isLoading, data} = useStreamerDetails(streamerId)
+    const {isLoading, data, refetch} = useStreamerDetails(streamerId)
+    const {mutate} = usePutVote(refetch)
 
     if(isLoading) return <>ładowanie...</>
 
     const [Icon, color] = getPlatformIcon(data?.data.platform)
+
+    function vote(positive: boolean) {
+        return () => {
+            mutate({streamerId: Number(streamerId), positive})
+        }
+    }
 
     return (
         <section className={styles.container}>
@@ -33,12 +41,12 @@ export function StreamerDetails() {
                         </div>
 
                         <div className={styles.votes}>
-                            <div>
+                            <div onClick={vote(true)}>
                                 <IconArrowBigUpFilled style={{color: data?.data.vote.up.voted ? "green": "unset"}} />
                                 <span>{data?.data.vote.up.amount}</span>
                             </div>
-                            <div>
-                                <IconArrowBigDownFilled style={{color: data?.data.vote.down.voted ? "red": "unset"}}/>
+                            <div onClick={vote(false)}>
+                                <IconArrowBigDownFilled style={{color: data?.data.vote.down.voted ? "red": "unset"}} />
                                 <span>{data?.data.vote.down.amount}</span>
                             </div>
                         </div>

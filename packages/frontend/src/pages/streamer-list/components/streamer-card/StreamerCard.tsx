@@ -4,7 +4,7 @@ import {
     IconArrowBigUpFilled,
 } from "@tabler/icons-react";
 import {StreamerVotes} from "../../models/streamers-schema.ts";
-import {usePutVote} from "../../mutations/use-put-vote.ts";
+import {usePutVote} from "../../../../common/mutations/use-put-vote.ts";
 import {Link} from "react-router-dom";
 
 const COLORS = [
