@@ -36,17 +36,21 @@ export function StreamerCard({idx, name, votes, refetch, streamerId}: Props) {
     }
 
     return (
-        <div className={styles.card}>
-            <div className={styles.flex}>
-                <p style={style} className={styles.cardNumber}>{idx + 1}</p>
-                <h1>{name}</h1>
-            </div>
-            <div className={styles.votes}>
-                <div onClick={vote(true)}>
-                    <IconArrowBigUpFilled size={30} color={votes.up.voted ? "green": undefined}/>
+        <div className={styles.container}>
+            <div className={styles.card}>
+                <div className={styles.flex}>
+                    <p style={style} className={styles.cardNumber}>{idx + 1}</p>
+                    <h1>{name}</h1>
                 </div>
-                <div onClick={vote(false)}>
-                    <IconArrowBigDownFilled size={30} color={votes.down.voted ? "red": undefined}/>
+                <div className={styles.votes}>
+                    <div onClick={vote(true)} className={styles.voteContainer}>
+                        {votes.up.amount}
+                        <IconArrowBigUpFilled size={30} style={{color: votes.up.voted ? "green" : "unset"}}/>
+                    </div>
+                    <div onClick={vote(false)} className={styles.voteContainer}>
+                        {votes.down.amount}
+                        <IconArrowBigDownFilled size={30} style={{color: votes.down.voted ? "red" : "unset"}}/>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,7 +3,8 @@ import {z} from "zod";
 export async function fetcher<T>(url: string, schema: z.ZodType<T>) {
     const response = await fetch(url, {
         headers: { Accept: 'application/json+queries' },
-        method: "GET"
+        method: "GET",
+        credentials: "include"
     })
 
     if(!response.ok) {

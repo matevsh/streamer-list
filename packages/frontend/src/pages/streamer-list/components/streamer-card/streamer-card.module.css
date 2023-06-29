@@ -1,7 +1,10 @@
+.container {
+    padding-bottom: 2rem;
+}
+
 .card {
     background: #132d4a;
     color: white;
-    margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
     border-radius: .5rem;
@@ -36,4 +39,9 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
+}
+
+.voteContainer {
+    display: flex;
+    align-items: center;
 }
