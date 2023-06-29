@@ -33,8 +33,16 @@ export class StreamerController {
   }
 
   @Get(':id')
-  async getStreamer(@Param('id', new ParseIntPipe()) streamerId: number) {
-    const streamer = await this.streamerService.getStreamerById(streamerId);
+  async getStreamer(
+    @Req() request: Request,
+    @Param('id', new ParseIntPipe()) streamerId: number,
+  ) {
+    const { userId } = request.cookies;
+
+    const streamer = await this.streamerService.getStreamerById(
+      streamerId,
+      userId,
+    );
     return { success: Boolean(streamer), data: streamer };
   }
 
