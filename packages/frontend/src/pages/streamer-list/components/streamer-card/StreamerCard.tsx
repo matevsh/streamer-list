@@ -5,6 +5,7 @@ import {
 } from "@tabler/icons-react";
 import {StreamerVotes} from "../../models/streamers-schema.ts";
 import {usePutVote} from "../../mutations/use-put-vote.ts";
+import {Link} from "react-router-dom";
 
 const COLORS = [
     "#e0ca36",
@@ -40,7 +41,10 @@ export function StreamerCard({idx, name, votes, refetch, streamerId}: Props) {
             <div className={styles.card}>
                 <div className={styles.flex}>
                     <p style={style} className={styles.cardNumber}>{idx + 1}</p>
-                    <h1>{name}</h1>
+                    {/*<a href=""><h1>{name}</h1></a>*/}
+                    <Link to={`/details/${streamerId}`}>
+                        <h1>{name}</h1>
+                    </Link>
                 </div>
                 <div className={styles.votes}>
                     <div onClick={vote(true)} className={styles.voteContainer}>

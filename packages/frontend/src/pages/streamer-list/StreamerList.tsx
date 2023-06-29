@@ -13,7 +13,8 @@ export function StreamerList() {
             {data && data.data.map((item, idx) => (
                 <StreamerCard
                     name={item.name}
-                    key={idx} idx={idx}
+                    key={idx}
+                    idx={idx}
                     votes={item.vote}
                     refetch={refetch}
                     streamerId={item.id}
