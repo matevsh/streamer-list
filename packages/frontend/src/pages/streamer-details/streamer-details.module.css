@@ -10,11 +10,14 @@
     border-radius: .5rem;
     border: 1px solid #284b73;
     padding: 1rem;
-}
-
-.headerContent {
     display: flex;
     gap: 1rem;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .navigation {
@@ -54,6 +57,27 @@
 
 .platform {
     text-transform: uppercase;
+}
+
+.votes {
+    display: flex;
+    gap: .5rem;
+    padding-top: 1rem;
+}
+
+.votes div {
+    background: #1b1534;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    border-radius: .5rem;
+    user-select: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.votes div:hover {
+    background: #352b5c;
 }
 
 @media(max-width: 600px) {
