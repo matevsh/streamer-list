@@ -42,7 +42,7 @@ export function StreamerCard({idx, name, votes, refetch, streamerId}: Props) {
                 <div className={styles.flex}>
                     <p style={style} className={styles.cardNumber}>{idx + 1}</p>
                     {/*<a href=""><h1>{name}</h1></a>*/}
-                    <Link to={`/details/${streamerId}`}>
+                    <Link to={`/details/${streamerId}`} className={styles.anchor}>
                         <h1>{name}</h1>
                     </Link>
                 </div>
