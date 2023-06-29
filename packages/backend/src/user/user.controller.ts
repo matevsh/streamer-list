@@ -21,7 +21,10 @@ export class UserController {
 
     const newUser = await this.userService.createUser();
     if (newUser) {
-      response.cookie('userId', newUser.uuid);
+      response.cookie('userId', newUser.uuid, {
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 12,
+        httpOnly: true,
+      });
       return { success: true };
     }
 

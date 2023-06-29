@@ -38,6 +38,11 @@ export class StreamerService {
           },
         },
       },
+      orderBy: {
+        Vote: {
+          _count: 'desc',
+        },
+      },
     });
 
     streamers.map(({ Vote, ...streamer }) => {
@@ -47,11 +52,15 @@ export class StreamerService {
             ...streamer,
             vote: {
               up: {
-                voted: Vote.some((v) => v.user.uuid === uuid && v.positive),
+                voted: Vote.some(
+                  (vote) => vote.positive && vote.user.uuid === uuid,
+                ),
                 amount: votesUp.length,
               },
               down: {
-                voted: Vote.some((v) => v.user.uuid === uuid && !v.positive),
+                voted: Vote.some(
+                  (vote) => !vote.positive && vote.user.uuid === uuid,
+                ),
                 amount: votesDown.length,
               },
             },
@@ -78,6 +87,7 @@ export class StreamerService {
         user: {
           uuid: userUuid,
         },
+        streamerId,
       },
     });
 
@@ -92,7 +102,7 @@ export class StreamerService {
       }
     }
 
-    const user = await this.prisma.user.findUnique({
+    const user = await this.prisma.user.findFirst({
       where: { uuid: userUuid },
     });
 
