@@ -6,13 +6,14 @@ import {useStreamerDetails} from "./queries/use-streamer-details.ts";
 import {DEFAULT_IMAGE} from "../../common/constants/default-image.ts";
 import {getPlatformIcon} from "../../common/data/platform-icons.ts";
 import {usePutVote} from "../../common/mutations/use-put-vote.ts";
+import {Loader} from "../../common/components/loader/Loader.tsx";
 
 export function StreamerDetails() {
     const {id: streamerId} = useParams()
     const {isLoading, data, refetch} = useStreamerDetails(streamerId)
     const {mutate} = usePutVote(refetch)
 
-    if(isLoading) return <>ładowanie...</>
+    if(isLoading) return <Loader />
 
     const [Icon, color] = getPlatformIcon(data?.data.platform)
 

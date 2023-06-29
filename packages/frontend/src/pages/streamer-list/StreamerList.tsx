@@ -3,9 +3,12 @@ import {useGetStreamers} from "./queries/use-get-streamers.ts";
 import styles from './streamer-list.module.css'
 import {Header} from "./components/header/Header.tsx";
 import {StreamerCard} from "./components/streamer-card/StreamerCard.tsx";
+import {Loader} from "../../common/components/loader/Loader.tsx";
 
 export function StreamerList() {
-    const {data, refetch} = useGetStreamers()
+    const {data, refetch, isLoading} = useGetStreamers()
+
+    if (isLoading) return <Loader />
 
     return (
         <div className={styles.container}>

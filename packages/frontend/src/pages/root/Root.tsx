@@ -3,22 +3,25 @@ import {Suspense} from "react";
 
 import styles from './root.module.css'
 import {useUserSession} from "./queries/use-user-session.ts";
+import {Loader} from "../../common/components/loader/Loader.tsx";
 
 export function Root() {
     const {isLoading, isError} = useUserSession()
 
-    if (isLoading) {
-        return <>ładowanie</>
-    }
+    let content;
 
-    if (isError) {
-        return <>błąd, spróbuj ponownie później</>
+    if (isLoading) {
+        content = <Loader />
+    } else if (isError) {
+        content = <>błąd, spróbuj ponownie później</>
+    } else {
+        content = <Outlet />
     }
 
     return (
         <div className={styles.container}>
             <Suspense>
-                <Outlet />
+                {content}
             </Suspense>
         </div>
     )
