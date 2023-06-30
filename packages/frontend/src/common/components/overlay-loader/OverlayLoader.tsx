@@ -3,14 +3,15 @@ import {Loader} from "../loader/Loader.tsx";
 
 interface Props {
     visible: boolean
+    color?: string
 }
 
-export function OverlayLoader({visible}: Props) {
+export function OverlayLoader({visible, color}: Props) {
     if(!visible) return null
 
     return (
         <div className={styles.background}>
-            <Loader />
+            <Loader color={color}/>
         </div>
     )
 }

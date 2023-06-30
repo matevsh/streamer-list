@@ -1,9 +1,13 @@
 import styles from './loader.module.css'
 
-export function Loader() {
+interface Props {
+    color?: string
+}
+
+export function Loader({color = "white"}: Props) {
     return (
         <div className={styles.loaderWrapper}>
-            <div className={styles.loader}></div>
+            <div className={styles.loader} style={{borderTopColor: color}}></div>
         </div>
     )
 }

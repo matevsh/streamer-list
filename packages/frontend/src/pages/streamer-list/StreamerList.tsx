@@ -26,7 +26,7 @@ export function StreamerList() {
                     streamerId={item.id}
                 />
             ))}
-            <AddStreamerModal modal={modal} setModal={setModal}/>
+            <AddStreamerModal modal={modal} setModal={setModal} refetch={refetch}/>
         </div>
     )
 }

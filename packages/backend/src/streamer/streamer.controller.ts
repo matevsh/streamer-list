@@ -21,7 +21,12 @@ export class StreamerController {
   @Post()
   async addStreamer(@Body() body: AddStreamerDto) {
     const streamer = await this.streamerService.addStreamer(body);
-    return { success: Boolean(streamer) };
+    return {
+      success: Boolean(streamer),
+      data: {
+        streamerId: streamer.id,
+      },
+    };
   }
 
   @Get()
