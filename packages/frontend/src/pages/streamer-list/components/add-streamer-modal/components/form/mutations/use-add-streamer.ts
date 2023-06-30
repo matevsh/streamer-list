@@ -17,7 +17,6 @@ export function useAddStreamer({refetch, setModal}: Props) {
         mutationFn: (body: FormSchema) => mutator(`${API_URL}/streamer`, body, addStreamerResponse),
         onSuccess: () => {
             refetch();
-            setModal(false)
         }
     })
 }
