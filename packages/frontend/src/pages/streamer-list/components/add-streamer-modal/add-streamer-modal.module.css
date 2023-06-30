@@ -1,21 +1,21 @@
 .container {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
-    max-width: 300px;
-    width: 100%;
-    background: #132d4a;
-    border-radius: .5rem;
-    border: 1px solid #284b73;
-    margin: 0 1rem;
+  max-width: 300px;
+  width: 100%;
+  background: #132d4a;
+  border-radius: 0.5rem;
+  border: 1px solid #284b73;
+  margin: 0 1rem;
 }

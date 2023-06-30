@@ -1,52 +1,52 @@
 .container {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .card {
-    background: #132d4a;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    border-radius: .5rem;
-    border: 1px solid #284b73;
+  background: #132d4a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  border: 1px solid #284b73;
 }
 
 .cardNumber {
-    color: white;
-    font-size: 3rem;
+  color: white;
+  font-size: 3rem;
 }
 
 .votes {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-    padding: 0 1rem
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
 }
 
 .votes > div {
-    transition: .5s;
-    cursor: pointer;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 .votes > div:hover {
-    color: gray;
+  color: gray;
 }
 
 .flex {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .voteContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .anchor {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }

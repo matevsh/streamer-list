@@ -1,1 +1,1 @@
-export {StreamerList as default} from './StreamerList.tsx'
+export { StreamerList as default } from './StreamerList.tsx'

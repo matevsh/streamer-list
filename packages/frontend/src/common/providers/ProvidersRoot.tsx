@@ -1,10 +1,10 @@
-import {ReactQueryProvider} from "./ReactQueryProvider.tsx";
-import {RouterRoot} from "./RouterRoot.tsx";
+import { ReactQueryProvider } from './ReactQueryProvider.tsx'
+import { RouterRoot } from './RouterRoot.tsx'
 
 export function ProvidersRoot() {
-    return (
-        <ReactQueryProvider>
-            <RouterRoot />
-        </ReactQueryProvider>
-    )
+  return (
+    <ReactQueryProvider>
+      <RouterRoot />
+    </ReactQueryProvider>
+  )
 }

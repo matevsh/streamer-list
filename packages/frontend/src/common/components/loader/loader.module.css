@@ -1,23 +1,23 @@
 .loader {
-    border: 10px solid transparent;
-    border-top: 10px solid white;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+  border: 10px solid transparent;
+  border-top: 10px solid white;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
 }
 
 .loaderWrapper {
-    padding-top: 2rem;
-    display: flex;
-    justify-content: center;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes spin {
-    from {
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
