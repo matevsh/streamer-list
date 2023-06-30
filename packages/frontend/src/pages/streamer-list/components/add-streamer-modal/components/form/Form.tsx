@@ -41,7 +41,7 @@ const SELECT_DATA = [
 
 export function Form({setModal, refetch}: Props) {
     const {register, handleSubmit, errors, control} = useAddStreamerForm()
-    const {mutate, isLoading, data, isSuccess} = useAddStreamer({refetch, setModal})
+    const {mutate, isLoading, data, isSuccess} = useAddStreamer({refetch})
 
     function onSubmit(formData: FormSchema) {
         mutate(formData)
