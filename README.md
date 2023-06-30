@@ -27,6 +27,6 @@ ___Requirements___
 ___Steps___
 1. Create database instance in path: `packages/backend/prisma/dev.db`, `dev.db` is the file name and need to be same.
 2. Now go to `packages/backend` and create `.env` from `.env.template` by default `API_URL` is `http://localhost:5173`
-3. Later change dir to `packages/frontend` and create `.env` from `.env.template` by default `API_URL` is `http://localhost:3000`
+3. Later change dir to `packages/frontend` and create `.env` from `.env.template` by default `FRONTEND_API` is `http://localhost:3000`
 4. Back to root catalog and run command `npm run prisma:generate`
 5. Now run two terminals, in first run `npm run start:api`, and in second `npm run start:web`
